@@ -1,20 +1,12 @@
 # prepare-data
 SRCNet Prepare Data Validation
 
-## Installation
-
-```bash
-git clone https://github.com/shinybrar/prepare-data.git
-cd prepare-data
-```
-
-## How to Run Prepare Data
-
-### Locally via `uv`
+## Run with `uv`
 
 uv is a fast Python package installer and resolver. For more information, visit the [official uv documentation](https://docs.astral.sh/uv/getting-started/installation/).
 
 #### Installation on Linux/macOS:
+
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
@@ -25,16 +17,24 @@ uv --version
 ```
 
 ### Usage
+
 ```
+git clone https://github.com/shinybrar/prepare-data.git
+cd prepare-data
 uv tool run marimo run --sandbox e2e.py
 ```
 
+or without, performing a git clone,
+```
+uv tool run marimo run --sandbox https://raw.githubusercontent.com/shinybrar/prepare-data/refs/heads/main/e2e.py
+```
 
-### Locally via `docker`
+
+### Run with `docker`
 
 ```bash
 cd prepare-data/
-docker run -p 2718:2718 --rm -it -v $(pwd):/prepare-data ghcr.io/astral-sh/uv:debian uv tool run marimo run --sandbox --no-token --host 0.0.0.0 /prepare-data/e2e.py
+docker run -p 2718:2718 --rm -it -v $(pwd):/prepare-data ghcr.io/astral-sh/uv:debian uv tool run marimo run --sandbox --no-token --host 0.0.0.0 https://raw.githubusercontent.com/shinybrar/prepare-data/refs/heads/main/e2e.py
 ```
 
 and then in your local browser visit,
